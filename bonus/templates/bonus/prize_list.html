@@ -1,0 +1,17 @@
+
+{% extends "base.html" %}
+
+{% block  prize%}
+    <h3>獎項多多</h3>
+    <p>本次活動共有以下的獎項：</p>
+
+    {% if prize_list %}
+    <ul>
+        {% for prize in prize_list %}        
+            <li><a href="{{ prize.get_url }}"> {{ prize.cname }}</a>:金額:{{prize.amount}} 元
+        {% endfor %}
+    </ul>
+    {% else %}
+        <p>There are no prize.</p>   
+    {% endif %}      
+{% endblock %}

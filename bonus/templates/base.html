@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+    <title>5000- extra bonus</title>
+
+    <script>
+        function f1() {
+            x = document.getElementById('winner_list').innerHTML = "Hello"
+        }
+
+        function showAllWinner() {
+            let s = "";
+            for (let prize in winNo1) {
+                s += "<div class='col-6 col-sm-4 col-md-3'>";
+                s += '<div class="logo div">';
+                let logo = logo_mapping[prize];
+                s += `<img src="img/${logo}" alt="" class="img-fluid">`;
+                s += "</div>";
+
+                s += `<div class="winner-list container" id="${prize}">`;
+                let prize_name = name_mapping[prize];
+                let winner = winNo1[prize];
+                s += `<p>${prize_name}</p>`;
+                let winner_div = winner.map(x => `<div class="winner"> ${x} </div>`);
+                s += winner_div.join("");
+                s += "</div></div>";
+            }
+            console.log(s);
+            document.getElementById("winner_list").innerHTML = s;
+        }
+    </script>
+
+    <style>
+    .sidebar-nav {
+            margin-top: 40px;
+            padding: 0;
+            list-style: none;
+        }
+
+        .center-block {
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+        }
+
+        .logo {
+            margin: 20px;
+        }
+
+        .winner-list {
+            text-align: left;
+        }
+
+        .winner {
+            margin: 1px;
+            border-radius: 100%;
+            border-style: solid;
+            border-color: antiquewhite;
+            padding: 5px;
+            font-size: 30px;
+            color: red;
+            display: inline-block;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-4">加碼劵</h1>
+                    <p class="lead">週週開獎，讓你好運領不完</p>
+                </div>
+</div>                
+
+                <div class="container">
+                {% block prize_desc %}{% endblock %}
+            </div>
+
+</div>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-1">
+            <ul class="sidebar-nav">
+                <li><a href="/bonus">第一週</a></li>
+                <li><a href="">第二週</a></li>
+                <li><a href="">第三週</a></li>
+                <li><a href="">第四週</a></li>
+                <li><a href="/bonus/prizes">獎項說明</a></li>
+            </ul>
+        </div> 
+
+        <div class="col-sm-11">
+
+
+            <div class="container">
+                {% block prize %}{% endblock %}
+            </div>
+        </div>
+    </div>    
+</div>
+
+<div class="container">
+    <hr>
+    <p>Web programming, IECS, FCU, 2021</p>
+</div>
+
+
+</body>
+
+</html>

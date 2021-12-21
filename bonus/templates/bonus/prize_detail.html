@@ -1,0 +1,8 @@
+
+{% extends "base.html" %}
+{% block prize %}
+    <img src="{{ prize.img.url}}" width='200px' alt="logo">
+    <h5> {{prize.cname}} </h5>
+    <p>金額：{{prize.amount}}</p>
+    <p>{{prize.desc}} </p>
+{% endblock %}
